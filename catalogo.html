@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjetas Delivery | Tarjetas Inteligentes NFC & Tecnología Digital</title>
+  
+  <meta name="description" content="Tarjetas de presentación inteligentes con chip NFC y QR dinámico en Perú. Conéctate con un solo toque.">
+  <meta property="og:title" content="Tarjetas Delivery | Catálogo Oficial de Tarjetas NFC">
+  <meta property="og:description" content="Descubre nuestras tarjetas inteligentes con chip NFC: PVC Matte, Metálicas Black Edition y Amaderadas. Envíos a todo el Perú.">
+  <meta property="og:type" content="website">
+
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #25d366;
+      --accent-glow: rgba(37, 211, 102, 0.25);
+      --primary: #38bdf8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fondo dinámico estilo malla tecnológica */
+    .bg-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .glow-1 { top: -100px; left: 50%; transform: translateX(-50%); background: #2563eb; }
+    .glow-2 { bottom: 10%; right: -100px; background: #059669; }
+
+    /* Barra de Navegación */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(7, 9, 14, 0.75);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 1.25rem;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #25d366;
+      color: #0b1a2c;
+      padding: 0.5rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+    }
+
+    .header-cta:hover {
+      transform: scale(1.04);
+      background: #22c55e;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4.5rem 1.25rem 3.5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.1rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 3.5rem; }
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto 2.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #25d366;
+      color: #07090e;
+      padding: 0.9rem 1.8rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      box-shadow: 0 10px 28px -5px rgba(37, 211, 102, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px -5px rgba(37, 211, 102, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.9rem 1.6rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Sección Cómo Funciona */
+    .steps-section {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(14px);
+    }
+
+    .step-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      margin: 0 auto 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+    }
+
+    .step-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Catálogo de Productos */
+    .catalog-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .badge-pop {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, #f43f5e, #ec4899);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+
+    .product-img-box {
+      width: 100%;
+      height: 220px;
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.06);
+    }
+
+    .product-body {
+      padding: 1.6rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .product-features li {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .product-features li i {
+      color: #22c55e;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .product-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1.1rem;
+    }
+
+    .price-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .price-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .btn-consult-wa {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      color: #25d366;
+      padding: 0.65rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-consult-wa:hover {
+      background: #25d366;
+      color: #07090e;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Banner Final de Conversión */
+    .cta-banner {
+      max-width: 1050px;
+      margin: 0 auto 5rem;
+      padding: 0 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner-inner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(6, 78, 59, 0.35));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 28px;
+      padding: 3rem 1.75rem;
+      text-align: center;
+      backdrop-filter: blur(18px);
+    }
+
+    .banner-inner h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .banner-inner p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      max-width: 550px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Luces decorativas de fondo -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Barra de Navegación -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <i data-lucide="nfc" style="width: 22px; height: 22px;"></i>
+        </div>
+        <span>Tarjetas Delivery</span>
+      </a>
+
+      <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20quiero%20consultar%20por%20las%20Tarjetas%20Inteligentes%20NFC" target="_blank" rel="noopener noreferrer" class="header-cta">
+        <i data-lucide="message-circle" style="width: 17px; height: 17px;"></i>
+        <span>Consultas al WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">
+      <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+      <span>Tecnología NFC de Última Generación</span>
+    </div>
+
+    <h1 class="hero-title">
+      La última tarjeta de presentación que <span>vas a necesitar</span>
+    </h1>
+
+    <p class="hero-sub">
+      Transfiere tu contacto, catálogo, redes sociales y WhatsApp con solo acercar tu tarjeta inteligente al teléfono de tu cliente. Sin aplicaciones extras, sin papel.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-primary">
+        <i data-lucide="layout-grid" style="width: 18px; height: 18px;"></i>
+        <span>Explorar Modelos</span>
+      </a>
+      <a href="https://nememn.github.io/brayan-card/" target="_blank" class="btn-secondary">
+        <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+        <span>Ver Demo en Vivo</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sección Cómo Funciona -->
+  <section class="steps-section">
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon-wrap">
+          <i data-lucide="smartphone" style="width: 26px; height: 26px;"></i>
+        </div>
+        <h3>1. Un solo toque (Tap)</h3>
+        <p>Acerca tu tarjeta a la parte trasera de cualquier iPhone o Android moderno con NFC.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-icon-wrap" style="background: rgba(37, 211, 102, 0.12); color: #22c55e;">
+          <i data-lucide="zap" style="width: 26px; height: 26px;"></i>
+        </div>
+        <h3>2. Abre al instante</h3>
+        <p>Tu perfil interactivo y enlaces se despliegan en el navegador sin instalar ninguna app.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-icon-wrap" style="background: rgba(168, 85, 247, 0.12); color: #a855f7;">
+          <i data-lucide="user-check" style="width: 26px; height: 26px;"></i>
+        </div>
+        <h3>3. Guarda tu Contacto</h3>
+        <p>Tu cliente guarda tu número, correo y redes directo a su agenda en un solo clic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo de Productos -->
+  <section id="catalogo" class="catalog-section">
+    <div class="section-header">
+      <span class="section-badge">Catálogo Oficial</span>
+      <h2 class="section-title">Elige tu estilo de impacto</h2>
+      <p class="section-desc">Diseños profesionales personalizados con tu logo, nombre y chip NFC regrabable de por vida.</p>
+    </div>
+
+    <div class="products-grid">
+      
+      <!-- Producto 1: PVC Matte Clásica -->
+      <div class="product-card">
+        <div class="product-img-box">
+          <img class="product-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&auto=format&fit=crop&q=80" alt="Tarjeta NFC Matte">
+        </div>
+        <div class="product-body">
+          <span class="product-category">Esencial</span>
+          <h3 class="product-name">Tarjeta PVC Black Matte NFC</h3>
+          <p class="product-desc">Acabado mate premium resistente al agua y al desgaste con código QR de respaldo.</p>
+          <ul class="product-features">
+            <li><i data-lucide="check"></i> Chip NFC NTAG216 de alta velocidad</li>
+            <li><i data-lucide="check"></i> Acabado Matte antihuellas</li>
+            <li><i data-lucide="check"></i> Código QR grabado en alta resolución</li>
+            <li><i data-lucide="check"></i> Página web de perfil incluida</li>
+          </ul>
+          <div class="product-footer">
+            <div class="price-box">
+              <span class="price-label">Precio Referencial</span>
+              <span class="price-val">S/ 49.00</span>
+            </div>
+            <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20quiero%20consultar%20por%20la%20Tarjeta%20PVC%20Black%20Matte%20de%20S/49" target="_blank" rel="noopener noreferrer" class="btn-consult-wa">
+              <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 2: Metal Black Edition (Más Popular) -->
+      <div class="product-card">
+        <span class="badge-pop">Top Ventas</span>
+        <div class="product-img-box">
+          <img class="product-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80" alt="Tarjeta Metálica NFC">
+        </div>
+        <div class="product-body">
+          <span class="product-category">Ejecutiva</span>
+          <h3 class="product-name">Metálica Black Edition NFC</h3>
+          <p class="product-desc">Fabricada en acero inoxidable pulido de 0.8mm con grabado láser de máxima elegancia.</p>
+          <ul class="product-features">
+            <li><i data-lucide="check"></i> Acero inoxidable de alto peso y presencia</li>
+            <li><i data-lucide="check"></i> Grabado láser de precisión indeleble</li>
+            <li><i data-lucide="check"></i> Chip NFC integrado de largo alcance</li>
+            <li><i data-lucide="check"></i> Presentación en estuche de lujo</li>
+          </ul>
+          <div class="product-footer">
+            <div class="price-box">
+              <span class="price-label">Precio Referencial</span>
+              <span class="price-val">S/ 89.00</span>
+            </div>
+            <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20quiero%20consultar%20por%20la%20Tarjeta%20Met%C3%A1lica%20Black%20Edition%20de%20S/89" target="_blank" rel="noopener noreferrer" class="btn-consult-wa">
+              <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 3: Bamboo Eco Edition -->
+      <div class="product-card">
+        <div class="product-img-box">
+          <img class="product-img" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80" alt="Tarjeta Madera Bamboo NFC">
+        </div>
+        <div class="product-body">
+          <span class="product-category">Ecológica</span>
+          <h3 class="product-name">Wood & Bamboo Eco NFC</h3>
+          <p class="product-desc">Madera de bambú natural tratada, 100% biodegradable y con textura orgánica única.</p>
+          <ul class="product-features">
+            <li><i data-lucide="check"></i> Madera de bambú sostenible certificada</li>
+            <li><i data-lucide="check"></i> Grabado en bajo relieve térmico</li>
+            <li><i data-lucide="check"></i> Chip NFC oculto en el corazón de la madera</li>
+            <li><i data-lucide="check"></i> Diseño minimalista e innovador</li>
+          </ul>
+          <div class="product-footer">
+            <div class="price-box">
+              <span class="price-label">Precio Referencial</span>
+              <span class="price-val">S/ 65.00</span>
+            </div>
+            <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20quiero%20consultar%20por%20la%20Tarjeta%20Wood%20Bamboo%20Eco%20de%20S/65" target="_blank" rel="noopener noreferrer" class="btn-consult-wa">
+              <i data-lucide="message-circle" style="width: 16px; height: 16px;"></i>
+              <span>Consultar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Banner de Consulta Final -->
+  <section class="cta-banner">
+    <div class="banner-inner">
+      <h2>¿Deseas tarjetas personalizadas para tu empresa o equipo?</h2>
+      <p>Hacemos descuentos especiales por volumen corporativo e incluimos el diseño de tu tarjeta y página interactiva a medida.</p>
+      <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20quisiera%20una%20cotizaci%C3%B3n%20para%20tarjetas%20NFC%20personalizadas" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+        <span>Cotizar por WhatsApp al 926 470 812</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://nememn.github.io/brayan-card/" target="_blank">Mi Tarjeta Personal</a>
+      <a href="https://www.facebook.com/brayancesar.choquehuarancca" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@brayanchhcc" target="_blank">TikTok</a>
+      <a href="https://instagram.com/bray.chh" target="_blank">Instagram</a>
+    </div>
+    <p>© 2026 Tarjetas Delivery • Desarrollado por Brayan Chuque • Lima, Perú</p>
+  </footer>
+
+  <script>
+    // Inicializar iconos de Lucide
+    lucide.createIcons();
+  </script>
+</body>
+</html>
