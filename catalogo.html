@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -737,5 +737,61 @@
     // Inicializar iconos de Lucide
     lucide.createIcons();
   </script>
+  <!-- Botón Flotante Llamativo de WhatsApp -->
+  <a href="https://wa.me/51926470812?text=Hola%20Brayan,%20tengo%20consultas%20sobre%20las%20Tarjetas%20NFC" target="_blank" rel="noopener noreferrer" class="floating-wa" title="Escríbenos por WhatsApp">
+    <div class="wa-tooltip">¿Dudas? Chatea conmigo</div>
+    <div class="wa-btn-circle">
+      <i data-lucide="message-circle" style="width: 30px; height: 30px; color: #fff;"></i>
+    </div>
+  </a>
+
+  <style>
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .wa-btn-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+      animation: pulseCircle 2s infinite;
+      transition: transform 0.25s ease;
+    }
+    .wa-btn-circle:hover {
+      transform: scale(1.1);
+    }
+    .wa-tooltip {
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      white-space: nowrap;
+    }
+    @keyframes pulseCircle {
+      0%, 100% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5); transform: scale(1); }
+      50% { box-shadow: 0 10px 32px rgba(37, 211, 102, 0.8); transform: scale(1.05); }
+    }
+    @media (max-width: 600px) {
+      .wa-tooltip { display: none; }
+      .floating-wa { bottom: 18px; right: 18px; }
+      .wa-btn-circle { width: 52px; height: 52px; }
+    }
+  </style>
 </body>
 </html>
+
